@@ -1,0 +1,16 @@
+{
+  "display": "standalone",
+  "icons": [
+    {
+      "sizes": "192x192",
+      "src": "/launcher-192x192.png",
+      "type": "image/png"
+    }, {
+      "src": "/launcher-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "name": "Preferences",
+  "theme_color": "#000000"
+}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <link rel="manifest" href="/manifest.json">
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, width=device-width">
+
+    <!-- Include jQuery. -->
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+    <!-- Include jQuery UI. -->
+
+    <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <!-- Include Bootstrap. -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.5/css/mdb.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.5/js/mdb.min.js"></script>
+
+    <script>
+      $(function() {
+        $('select').selectmenu();
+
+        var preferences = $('#preferences');
+
+        preferences.submit(function(event) {
+          window.location = $('#scheme').val() + '://preferences?' + preferences.serialize();
+          return false;
+        });
+      });
+    </script>
+
+    <style>
+      body {padding-top: 70px}
+      input {width: 100%}
+      .row {padding-top: 10px}
+      .ui-selectmenu-button.ui-button {width: 100%}
+    </style>
+    <title>AbaService Preferences</title>
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <span class="navbar-brand">AbaService Preferences</span>
+        </div>
+      </div>
+    </div>
+
+    <form>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <b>AbaService Build Type</b>
+          </div>
+          <div class="col-md-6">
+            <select id="scheme">
+              <option value="ch.abacus.abaservice.dev" selected>Debug</option>
+              <option value="ch.abacus.abaservice.alpha">Alpha</option>
+              <option value="ch.abacus.abaservice.beta">Beta</option>
+              <option value="ch.abacus.abaservice">Release</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <form id="preferences">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <b>AbaSky Environment</b>
+          </div>
+          <div class="col-md-6">
+            <select id="abaSkyEnvironment" name="abaSkyEnvironment">
+              <option value="DEV">Development</option>
+              <option value="INT">Integration</option>
+              <option value="MOCK">Mock</option>
+              <option value="PROD" selected>Production</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <b>Cloud Logging</b>
+          </div>
+          <div class="col-md-6">
+            <select id="cloudLogging" name="cloudLogging">
+              <option value="false">Disabled</option>
+              <option value="true">Enabled</option>
+            </select>
+            <small>
+              If enabled, logs created by the application are sent to a cloud
+              service, where Abacus can inspect them in real time.
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <input class="btn btn-primary" type="submit" value="Apply">
+          </div>
+        </div>
+      </div>
+    </form>
+  </body>
+</html>
